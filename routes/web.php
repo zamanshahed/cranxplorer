@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,6 @@ Route::get('/home', function () {
 
 Route::get('/contact', [ContactController::class, 'index'])->middleware('CheckAge');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    $users = User::all();
+    return view('dashboard', compact('users'));
 })->name('dashboard');
