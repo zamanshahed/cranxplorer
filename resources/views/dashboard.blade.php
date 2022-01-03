@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Welcome.. <b>{{ Auth::user()->name }}</b>
+            Hi.. <b>{{ Auth::user()->name }}</b>! <br>  Welcome to <b>CranXplorer</b>
             <b style="float:right">
                 Total Users: <span class="badge bg-info"> {{ count($users) }} </span>
             </b>
@@ -30,7 +30,8 @@
                                 <th scope="row">{{ $i++ }}</th>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->created_at->diffForHumans() }}</td>
+                                <td>{{ Carbon\Carbon::parse($user->created_at)->diffForHumans() }}</td> 
+                                <!-- Carbon\Carbon::parse only for query builder method  -->
                             </tr>
                             @endforeach
                         </tbody>

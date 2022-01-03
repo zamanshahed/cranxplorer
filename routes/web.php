@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,10 @@ Route::get('/home', function () {
 
 Route::get('/contact', [ContactController::class, 'index'])->middleware('CheckAge');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    $users = User::all();
+    
+    $users_ORM = User::all(); //using eloquenr ORM
+
+    $users = DB::table('users')->get(); //using query builder
+
     return view('dashboard', compact('users'));
 })->name('dashboard');
