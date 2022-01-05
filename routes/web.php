@@ -36,6 +36,9 @@ Route::get('/contact', [ContactController::class, 'index'])->middleware('CheckAg
 //category with controller
 Route::get('/catrgory/all', [CategoryController::class, 'AllCat'])->name('all.category');
 
+//add new category
+Route::post('/catrgory/add', [CategoryController::class, 'AddCat'])->name('store.category');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     
     $users_ORM = User::all(); //using eloquenr ORM
