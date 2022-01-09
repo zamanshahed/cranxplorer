@@ -23,26 +23,36 @@
                         @endif
                         <div class="card-header">All Categories</div>
 
+                        @php
+                            $i = 1;
+                        @endphp
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">SL No.</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
+                                    <th scope="col">Category Name</th>
+                                    <th scope="col">User Name</th>
                                     <th scope="col">Created At</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                @foreach ($categories as $item)
+                                    <tr>
+                                        <th scope="row">{{ $categories->firstItem() + $loop->index }}</th>
+                                        <td> {{ $item->category_name }} </td>
+                                        <td>{{ $item->user_finder->name }}</td>
+                                        <td>
+                                            @if ($item->created_at)
+                                                {{ $item->created_at->diffForHumans() }}
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
 
                             </tbody>
                         </table>
+                        {{ $categories->links() }}
                     </div>
                 </div>
 
