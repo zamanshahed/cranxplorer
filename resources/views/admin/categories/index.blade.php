@@ -49,8 +49,8 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="" class="btn btn-info">Edit</a>
-                                            <a href="" class="btn btn-danger">Edit</a>
+                                            <a href="{{url('category/edit/'.$item->id)}}" class="btn btn-info">Edit</a>
+                                            <a href="{{url('category/delete/'.$item->id)}}" class="btn btn-danger">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach

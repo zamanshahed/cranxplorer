@@ -39,6 +39,11 @@ Route::get('/catrgory/all', [CategoryController::class, 'AllCat'])->name('all.ca
 //add new category
 Route::post('/catrgory/add', [CategoryController::class, 'AddCat'])->name('store.category');
 
+//edit category 
+Route::get('/category/edit/{id}', [CategoryController::class, 'EditCat']);
+
+
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     
     $users_ORM = User::all(); //using eloquenr ORM

@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function AllCat()
     {
-        $categories = Category::latest()->paginate(2);
+        $categories = Category::latest()->paginate(4);
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -32,5 +32,11 @@ class CategoryController extends Controller
 
 
         return redirect()->back()->with('success', 'New Category Added !');
+    }
+
+    public function EditCat($id){
+        $categories = Category::find($id);
+
+        return view('admin.categories.edit', compact('categories'));
     }
 }
