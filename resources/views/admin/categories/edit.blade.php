@@ -16,7 +16,7 @@
                     <div class="card">
                         <div class="card-header">Edit informations</div>
                         <div class="card-body">
-                            <form action="  " method="POST">
+                            <form action=" {{url('category/update/'.$categories->id)}} " method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Catrgory Name</label>
