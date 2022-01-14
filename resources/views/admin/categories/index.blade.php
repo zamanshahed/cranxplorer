@@ -1,3 +1,13 @@
+{{-- 
+    
+    @Author: MD Shaheduzzaman Shahed
+    http://github.com/zamanshahed/
+    
+--}}
+
+
+
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -6,11 +16,13 @@
     </x-slot>
 
     <div class="py-12">
-        <!-- <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg"> -->
-        <!-- <x-jet-welcome /> -->
+
         <div class="container">
             <div class="row">
+
+
+                {{-- Start Category List --}}
+
 
                 <div class="col-md-8">
                     <div class="card">
@@ -49,8 +61,10 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{url('category/edit/'.$item->id)}}" class="btn btn-info">Edit</a>
-                                            <a href="{{url('category/delete/'.$item->id)}}" class="btn btn-danger">Delete</a>
+                                            <a href="{{ url('category/edit/' . $item->id) }}"
+                                                class="btn btn-info">Edit</a>
+                                            <a href="{{ url('soft_delete/category/' . $item->id) }}"
+                                                class="btn btn-danger">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -60,6 +74,14 @@
                         {{ $categories->links() }}
                     </div>
                 </div>
+
+                {{-- End Category List --}}
+
+
+
+
+
+                {{-- Start Add Category  --}}
 
                 <div class="col-md-4">
                     <div class="card">
@@ -82,9 +104,84 @@
                     </div>
                 </div>
 
+                {{-- End Add Category --}}
+
+
+
+                {{-- Start Trash --}}
+
+                <div class="container">
+                    <div class="col-md-8">
+                        <div class="card">
+                            @if (session('success'))
+                                {{-- <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong> {{ session('success') }} </strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div> --}}
+                            @endif
+                            <div class="card-header">Trash List</div>
+
+                            @php
+                                $i = 1;
+                            @endphp
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">SL No.</th>
+                                        <th scope="col">Category Name</th>
+                                        <th scope="col">User Name</th>
+                                        <th scope="col">Created At</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach ($trashBin as $item)
+                                        <tr>
+                                            <th scope="row">{{ $trashBin->firstItem() + $loop->index }}</th>
+                                            <td> {{ $item->category_name }} </td>
+                                            <td>{{ $item->user_finder->name }}</td>
+                                            <td>
+                                                @if ($item->created_at)
+                                                    {{ $item->created_at->diffForHumans() }}
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ url('category/edit/' . $item->id) }}"
+                                                    class="btn btn-info">Restore</a>
+                                                <a href="{{ url('category/delete/' . $item->id) }}"
+                                                    class="btn btn-danger">Delete Forever</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                            {{ $trashBin->links() }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    
+                </div>
+
+
+                {{-- End Trash --}}
+
+
+
             </div>
         </div>
         <!-- </div> -->
         <!-- </div> -->
+
+
+
+
     </div>
+
+
+
 </x-app-layout>
