@@ -56,7 +56,10 @@ class CategoryController extends Controller
         return Redirect()->back()->with('success', 'The Category Moved to Trash !');
     }
 
-
+    public function Restore($id){
+        $undo_delete = Category::withTrashed()->find($id)->restore();
+        return Redirect()->back()->with('success', 'Restored The Category From Trash !');
+    }
 
 
 
