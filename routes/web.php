@@ -51,6 +51,10 @@ Route::get('/soft_delete/category/{id}', [CategoryController::class, 'SoftDelete
 //restore category 
 Route::get('/category/restore/{id}', [CategoryController::class, 'Restore']);
 
+//restore category 
+Route::get('/category/permanent_delete/{id}', [CategoryController::class, 'P_Delete']);
+
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     
     $users_ORM = User::all(); //using eloquenr ORM
