@@ -62,7 +62,12 @@ Route::get('/category/permanent_delete/{id}', [CategoryController::class, 'P_Del
 //All Brand home
 Route::get('/brand/all', [BrandController::class, 'AllBrand'])->name('all.brand');
 
+//add new brand
+Route::post('/brand/add', [BrandController::class, 'AddBrand'])->name('store.brand');
 
+
+
+                    //For Brand Routes
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     
     $users_ORM = User::all(); //using eloquenr ORM
