@@ -26,13 +26,13 @@ class BrandController extends Controller
         $name_gen = hexdec(uniqid());
         $img_ext = strtolower($brand_img->getClientOriginalExtension());
         $img_name = $name_gen . '.' . $img_ext;
-        $up_locaiont = 'image/brand';
+        $up_location = 'image/brand/';
 
         //up image location with file name and ext
-        $last_img = $up_locaiont . $img_name;
+        $last_img = $up_location . $img_name;
 
         //upload action
-        $brand_img->move($up_locaiont, $img_name);
+        $brand_img->move($up_location, $img_name);
 
         //keep track in db
         Brand::insert([
