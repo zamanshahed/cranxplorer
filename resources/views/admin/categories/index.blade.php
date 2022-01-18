@@ -92,7 +92,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Catrgory Name</label>
                                     <input type="text" name="category_name" class="form-control"
-                                        id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Category Name">
                                     @error('category_name')
                                         <span class="text-danger"> {{ $message }} </span>
                                     @enderror

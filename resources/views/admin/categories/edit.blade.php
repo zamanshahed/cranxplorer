@@ -21,7 +21,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Catrgory Name</label>
                                     <input type="text" name="category_name" class="form-control"
-                                        id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="{{$categories->category_name}}">
+                                        id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Category Name" value="{{$categories->category_name}}">
                                     @error('category_name')
                                         <span class="text-danger"> {{ $message }} </span>
                                     @enderror

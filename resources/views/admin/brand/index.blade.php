@@ -50,7 +50,7 @@
                                     <tr>
                                         <th scope="row">{{ $brands->firstItem() + $loop->index }}</th>
                                         <td> {{ $item->brand_name }} </td>
-                                        <td> <img src="" alt=""> </td>
+                                        <td> <img src=" {{asset($item->brand_image)}} " alt="brand-image-logo" style="height: 60px; width:auto" > </td>
                                         <td>
                                             @if ($item->created_at)
                                                 {{ $item->created_at->diffForHumans() }}
@@ -89,7 +89,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Brand Name</label>
                                     <input type="text" name="brand_name" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Enter email">
+                                        aria-describedby="emailHelp" placeholder="Enter Brand Name">
                                     @error('brand_name')
                                         <span class="text-danger"> {{ $message }} </span>
                                     @enderror
