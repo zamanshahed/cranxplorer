@@ -48,7 +48,7 @@ Route::get('/category/edit/{id}', [CategoryController::class, 'EditCat']);
 //update category 
 Route::post('/category/update/{id}', [CategoryController::class, 'UpdateCat']);
 
-//edit category 
+//delete category 
 Route::get('/soft_delete/category/{id}', [CategoryController::class, 'SoftDelete']);
 
 //restore category 
@@ -65,6 +65,8 @@ Route::get('/brand/all', [BrandController::class, 'AllBrand'])->name('all.brand'
 //add new brand
 Route::post('/brand/add', [BrandController::class, 'AddBrand'])->name('store.brand');
 
+//edit brand
+Route::get('/brand/edit/{id}', [BrandController::class, 'EditBrand']);
 
 
                     //For Brand Routes

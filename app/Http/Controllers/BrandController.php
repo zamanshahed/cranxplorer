@@ -45,6 +45,9 @@ class BrandController extends Controller
         return Redirect()->back()->with('success', 'New Brand Added !');
     } //add brand ends
 
-
+    public function EditBrand($id){
+        $brands = Brand::find($id);
+        return view('admin.brand.edit', compact('brands'));
+    }
 
 }
