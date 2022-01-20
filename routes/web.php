@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 
 Route::get('/home', function () {
-    echo"Welcome Home !";
+    echo "Welcome Home ! ";
 });
 
 
@@ -34,7 +34,7 @@ Route::get('/home', function () {
 
 Route::get('/contact', [ContactController::class, 'index'])->middleware('CheckAge');
 
-                    //For Category Routes
+//For Category Routes
 
 //category with controller
 Route::get('/catrgory/all', [CategoryController::class, 'AllCat'])->name('all.category');
@@ -58,7 +58,7 @@ Route::get('/category/restore/{id}', [CategoryController::class, 'Restore']);
 Route::get('/category/permanent_delete/{id}', [CategoryController::class, 'P_Delete']);
 
 
-                    //For Brand Routes
+//For Brand Routes
 //All Brand home
 Route::get('/brand/all', [BrandController::class, 'AllBrand'])->name('all.brand');
 
@@ -69,9 +69,9 @@ Route::post('/brand/add', [BrandController::class, 'AddBrand'])->name('store.bra
 Route::get('/brand/edit/{id}', [BrandController::class, 'EditBrand']);
 
 
-                    //For Brand Routes
+//For Brand Routes
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    
+
     $users_ORM = User::all(); //using eloquenr ORM
 
     $users = DB::table('users')->get(); //using query builder
