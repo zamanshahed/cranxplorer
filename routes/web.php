@@ -18,12 +18,12 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
     return view('welcome');
 });
 
 
-Route::get('/home', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
     echo "Welcome Home ! ";
 });
 
@@ -32,41 +32,41 @@ Route::get('/home', function () {
 //     return view('contact');
 // });
 
-Route::get('/contact', [ContactController::class, 'index'])->middleware('CheckAge');
+Route::middleware(['auth:sanctum', 'verified'])->get('/contact', [ContactController::class, 'index'])->middleware('CheckAge');
 
 //For Category Routes
 
 //category with controller
-Route::get('/catrgory/all', [CategoryController::class, 'AllCat'])->name('all.category');
+Route::middleware(['auth:sanctum', 'verified'])->get('/catrgory/all', [CategoryController::class, 'AllCat'])->name('all.category');
 
 //add new category
-Route::post('/catrgory/add', [CategoryController::class, 'AddCat'])->name('store.category');
+Route::middleware(['auth:sanctum', 'verified'])->post('/catrgory/add', [CategoryController::class, 'AddCat'])->name('store.category');
 
 //edit category 
-Route::get('/category/edit/{id}', [CategoryController::class, 'EditCat']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/category/edit/{id}', [CategoryController::class, 'EditCat']);
 
 //update category 
-Route::post('/category/update/{id}', [CategoryController::class, 'UpdateCat']);
+Route::middleware(['auth:sanctum', 'verified'])->post('/category/update/{id}', [CategoryController::class, 'UpdateCat']);
 
 //delete category 
-Route::get('/soft_delete/category/{id}', [CategoryController::class, 'SoftDelete']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/soft_delete/category/{id}', [CategoryController::class, 'SoftDelete']);
 
 //restore category 
-Route::get('/category/restore/{id}', [CategoryController::class, 'Restore']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/category/restore/{id}', [CategoryController::class, 'Restore']);
 
 //restore category 
-Route::get('/category/permanent_delete/{id}', [CategoryController::class, 'P_Delete']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/category/permanent_delete/{id}', [CategoryController::class, 'P_Delete']);
 
 
 //For Brand Routes
 //All Brand home
-Route::get('/brand/all', [BrandController::class, 'AllBrand'])->name('all.brand');
+Route::middleware(['auth:sanctum', 'verified'])->get('/brand/all', [BrandController::class, 'AllBrand'])->name('all.brand');
 
 //add new brand
-Route::post('/brand/add', [BrandController::class, 'AddBrand'])->name('store.brand');
+Route::middleware(['auth:sanctum', 'verified'])->post('/brand/add', [BrandController::class, 'AddBrand'])->name('store.brand');
 
 //edit brand
-Route::get('/brand/edit/{id}', [BrandController::class, 'EditBrand']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/brand/edit/{id}', [BrandController::class, 'EditBrand']);
 
 
 //For Brand Routes
