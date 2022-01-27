@@ -18,42 +18,25 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
+//Welcome screen
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
     return view('welcome');
 });
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
-    echo "Welcome Home ! ";
-});
-
-
-// Route::get('/contact', function () {
-//     return view('contact');
-// });
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/contact', [ContactController::class, 'index'])->middleware('CheckAge');
-
 //For Category Routes
-
 //category with controller
 Route::middleware(['auth:sanctum', 'verified'])->get('/catrgory/all', [CategoryController::class, 'AllCat'])->name('all.category');
-
 //add new category
 Route::middleware(['auth:sanctum', 'verified'])->post('/catrgory/add', [CategoryController::class, 'AddCat'])->name('store.category');
-
 //edit category 
 Route::middleware(['auth:sanctum', 'verified'])->get('/category/edit/{id}', [CategoryController::class, 'EditCat']);
-
 //update category 
 Route::middleware(['auth:sanctum', 'verified'])->post('/category/update/{id}', [CategoryController::class, 'UpdateCat']);
-
 //delete category 
 Route::middleware(['auth:sanctum', 'verified'])->get('/soft_delete/category/{id}', [CategoryController::class, 'SoftDelete']);
-
 //restore category 
 Route::middleware(['auth:sanctum', 'verified'])->get('/category/restore/{id}', [CategoryController::class, 'Restore']);
-
 //restore category 
 Route::middleware(['auth:sanctum', 'verified'])->get('/category/permanent_delete/{id}', [CategoryController::class, 'P_Delete']);
 
@@ -61,15 +44,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/category/permanent_delete
 //For Brand Routes
 //All Brand home
 Route::middleware(['auth:sanctum', 'verified'])->get('/brand/all', [BrandController::class, 'AllBrand'])->name('all.brand');
-
 //add new brand
 Route::middleware(['auth:sanctum', 'verified'])->post('/brand/add', [BrandController::class, 'AddBrand'])->name('store.brand');
-
 //edit brand
 Route::middleware(['auth:sanctum', 'verified'])->get('/brand/edit/{id}', [BrandController::class, 'EditBrand']);
 
 
-//For Brand Routes
+//Home / Dashboard
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
     $users_ORM = User::all(); //using eloquenr ORM
