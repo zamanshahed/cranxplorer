@@ -16,8 +16,15 @@
                     <div class="card">
                         <div class="card-header">Edit informations</div>
                         <div class="card-body">
-                            <form action=" {{ url('brand/update/' . $brands->id) }} " method="POST">
+                            <form action=" {{ url('brand/update/' . $brands->id) }} " method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
+
+                                {{-- get the old_image url in an input to take action --}}
+
+                                <input type="hidden" name="old_image" value="{{ $brands->brand_image }}">
+                                <input type="hidden" name="old_name" value="{{ $brands->brand_name }}">
+
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Update Brand Name</label>
                                     <input type="text" name="brand_name" class="form-control" id="exampleInputEmail1"
@@ -39,7 +46,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <img src=" {{ asset($brands->brand_image) }} " alt="" style="height: 110px; width:auto">
+                                    <img src=" {{ asset($brands->brand_image) }} " alt=""
+                                        style="height: 200px; width:auto">
                                 </div>
 
                                 <br>

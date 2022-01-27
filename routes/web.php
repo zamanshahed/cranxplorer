@@ -48,6 +48,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/brand/all', [BrandControl
 Route::middleware(['auth:sanctum', 'verified'])->post('/brand/add', [BrandController::class, 'AddBrand'])->name('store.brand');
 //edit brand
 Route::middleware(['auth:sanctum', 'verified'])->get('/brand/edit/{id}', [BrandController::class, 'EditBrand']);
+//update category 
+Route::middleware(['auth:sanctum', 'verified'])->post('/brand/update/{id}', [BrandController::class, 'UpdateBrand']);
 
 
 //Home / Dashboard
