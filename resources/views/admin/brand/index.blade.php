@@ -7,7 +7,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            All Categories
+            All Brands
         </h2>
     </x-slot>
 
@@ -29,7 +29,7 @@
                                     aria-label="Close"></button>
                             </div>
                         @endif
-                        <div class="card-header">All Brands</div>
+                        <div class="card-header">Available Brands</div>
 
                         @php
                             $i = 1;
