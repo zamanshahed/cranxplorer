@@ -59,7 +59,7 @@
                                         <td>
                                             <a href="{{ url('brand/edit/' . $item->id) }}"
                                                 class="btn btn-info">Edit</a>
-                                            <a href="{{ url('soft_delete/brand/' . $item->id) }}"
+                                            <a href="{{ url('brand/delete/' . $item->id) }}" onclick="return confirm('Are you sure to delete forever?')"
                                                 class="btn btn-danger">Delete</a>
                                         </td>
                                     </tr>

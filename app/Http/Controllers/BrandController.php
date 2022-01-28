@@ -97,5 +97,20 @@ class BrandController extends Controller
 
         //action after updating brand
         return Redirect('/brand/all')->with('success', 'Brand: ' . $old_name . ' is Updated !');
+    } //ends update brand
+
+
+    public function DeleteBrand ($id){
+
+        //find and delete old image file
+        $image_path = Brand::find($id)->brand_image;
+        unlink($image_path);
+
+        //find and clear Brand from DB
+        Brand::find($id)->delete();
+
+        //action after deleting brand
+        return Redirect('/brand/all')->with('success', 'Brand Deleted!');
     }
+
 }
