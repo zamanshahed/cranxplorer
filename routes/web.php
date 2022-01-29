@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
+// if not done, Email varification notice !
+
 //Welcome screen
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
     return view('welcome');
