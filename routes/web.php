@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\DB;
 
 //Welcome screen
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
 
