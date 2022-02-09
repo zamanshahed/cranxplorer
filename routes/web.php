@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
@@ -68,3 +69,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin.index');
     // return view('dashboard', compact('users'));
 })->name('dashboard');
+
+
+//custom logout route
+Route::get('/user/logout', [AdminController::class, 'Logout'])->name('user.logout');
