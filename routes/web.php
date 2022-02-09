@@ -7,6 +7,8 @@ use App\Http\Controllers\BrandController;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
+use function Ramsey\Uuid\v1;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,9 +61,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/brand/delete/{id}', [Bran
 //Home / Dashboard
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
-    $users_ORM = User::all(); //using eloquenr ORM
+    // $users_ORM = User::all(); //using eloquenr ORM
 
-    $users = DB::table('users')->get(); //using query builder
+    // $users = DB::table('users')->get(); //using query builder
 
-    return view('dashboard', compact('users'));
+    return view('admin.index');
+    // return view('dashboard', compact('users'));
 })->name('dashboard');
